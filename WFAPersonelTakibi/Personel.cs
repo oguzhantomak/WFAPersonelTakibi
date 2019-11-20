@@ -16,6 +16,6 @@ namespace WFAPersonelTakibi
         public string PersonelAddress { get; set; }
         public string PersonelPhone { get; set; }
         public PersonelDepartmentType PersonelDepartment { get; set; }
-        public string PersonelImageURL { get; set; }
+        public string PersonelImageURL { get; set; } = $@"{Environment.CurrentDirectory}\..\..\img\user.png";
     }
 }

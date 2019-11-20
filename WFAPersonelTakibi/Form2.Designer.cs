@@ -59,7 +59,7 @@
             this.tsmYeni,
             this.tsmDetay});
             this.cmsMenu.Name = "metroContextMenu1";
-            this.cmsMenu.Size = new System.Drawing.Size(126, 92);
+            this.cmsMenu.Size = new System.Drawing.Size(181, 114);
             // 
             // tsmDuzenle
             // 
@@ -70,8 +70,9 @@
             // tsmSil
             // 
             this.tsmSil.Name = "tsmSil";
-            this.tsmSil.Size = new System.Drawing.Size(125, 22);
+            this.tsmSil.Size = new System.Drawing.Size(180, 22);
             this.tsmSil.Text = "Sil";
+            this.tsmSil.Click += new System.EventHandler(this.TsmSil_Click);
             // 
             // tsmYeni
             // 
@@ -92,6 +93,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvEmployees);
             this.Name = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             this.cmsMenu.ResumeLayout(false);
             this.ResumeLayout(false);

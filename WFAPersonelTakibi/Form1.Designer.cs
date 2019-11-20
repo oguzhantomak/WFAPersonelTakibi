@@ -75,6 +75,7 @@
             this.pcbImageUrl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbImageUrl.TabIndex = 9;
             this.pcbImageUrl.TabStop = false;
+            this.pcbImageUrl.DoubleClick += new System.EventHandler(this.PcbImageUrl_DoubleClick);
             // 
             // metroLabel4
             // 
@@ -398,6 +399,7 @@
             this.metroLink1.Text = "Personel Listesi";
             this.metroLink1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.metroLink1.UseSelectable = true;
+            this.metroLink1.Click += new System.EventHandler(this.MetroLink1_Click);
             // 
             // Form1
             // 

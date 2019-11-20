@@ -24,6 +24,9 @@ namespace WFAPersonelTakibi
             cmbDepartment.Items.AddRange(Enum.GetNames(typeof(PersonelDepartmentType)));
         }
 
+        public static List<Personel> personeller = new List<Personel>();
+
+        #region Save
         private void BtnSave_Click(object sender, EventArgs e)
         {
             Personel personel = new Personel();
@@ -46,9 +49,53 @@ namespace WFAPersonelTakibi
                 }
             }
 
+            if (pcbImageUrl.Tag != null)
+            {
+                personel.PersonelImageURL = pcbImageUrl.Tag.ToString();
+            }
+
             personel.PersonelAddress = txtAddress.Text;
             personel.PersonelPhone = txtPhone.Text;
             personel.PersonelDepartment = (PersonelDepartmentType)Enum.Parse(typeof(PersonelDepartmentType), cmbDepartment.Text);
+
+            personeller.Add(personel);
+        }
+        #endregion
+
+        #region Save Image
+        private void PcbImageUrl_DoubleClick(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "png files(*.png)|*.png |jpg files (*.jpg)|*.jpg";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                pcbImageUrl.Image = Image.FromFile(ofd.FileName);
+            }
+
+            //string imageName = $"{Guid.NewGuid()}{System.IO.Path.GetExtension(ofd.FileName)}";
+            //System.IO.Path.GetExtension(ofd.FileName) anlamı ofd.filename ile çekilen dosyanın uzantısını teslim eder. yani .jpg veya .png vb.
+
+            string imageName = $@"{Environment.CurrentDirectory}\..\..\img\{Guid.NewGuid()}{System.IO.Path.GetExtension(ofd.FileName)}";
+
+            pcbImageUrl.Image.Save(imageName);
+
+            bool result = System.IO.File.Exists(imageName);
+
+            if (result)
+            {
+                pcbImageUrl.Tag = imageName;
+            }
+
+        }
+
+        #endregion
+
+        private void MetroLink1_Click(object sender, EventArgs e)
+        {
+            Form2 frm = new Form2();
+            this.Hide();
+            frm.ShowDialog();
         }
     }
 }

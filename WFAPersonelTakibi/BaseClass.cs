@@ -8,7 +8,7 @@ namespace WFAPersonelTakibi
 {
     public abstract class BaseClass
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime CreatedDate { get; private set; }
         public string CreatedIp { get; set; }
         public string CreatedComputerName { get; set; }
@@ -23,6 +23,8 @@ namespace WFAPersonelTakibi
             this.CreatedDate = DateTime.Now;
             this.CreatedComputerName = Environment.MachineName;
             this.CreatedIp = "12.0.0.1";
+            this.Id = Guid.NewGuid();
+            //Her çağırldığında yeni bir guid üretilecek.
         }
     }
 
